@@ -3,8 +3,5 @@
 
 Target path: `/admin/FUZZ.html`
 
-**Wordlist:** SecLists `raft-small-words.txt`
-
-Fuzzed the FUZZ position with Intruder (Sniper mode) against `/admin/FUZZ.html` → hit `/admin/2010.html`, which contained the flag.
-
-**Flag:** `HTB{burp_1n7rud3r_fuzz3r!}`
+## Approach
+Send the request to Intruder (Sniper mode), set the FUZZ payload position on the filename, and load SecLists' `raft-small-words.txt` as the payload list. Look for a hit with a distinct response (different length/status) — open that page for the flag.

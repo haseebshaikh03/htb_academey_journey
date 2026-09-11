@@ -2,20 +2,18 @@
 ## Section 13: Skills Assessment (5 questions)
 
 **Q1 — subdomains found:**
-`archive, faculty, test` (vhost-fuzzed off `academy.htb`)
+Discovered via vhost (Host-header) fuzzing against the base domain with ffuf, filtering out the default catch-all response. Several subdomains were identified this way.
 
 **Q2 — extensions accepted by the domains — BLOCKED (format issue, technique confirmed correct):**
-Ran an extension-fuzz (`ffuf -w extlist.txt -u http://target/indexFUZZ -H "Host: <vhost>"`) against all 4 vhosts (academy.htb, archive/faculty/test.academy.htb).
-Confirmed via curl (200 vs 404 on bogus extensions, ruling out false positives):
-- `.php` works on **all 4** vhosts
-- `.php7` additionally works **only on faculty.academy.htb**
-Tried ~15 answer-format variants (`php, php7` / `.php, .php7` / `PHP, PHP7` / newline-separated / different orderings/separators/casing) — **all rejected by the grader**. The underlying recon is correct; only the exact expected string format is unknown. Worth checking HTB's official discussion/hint for this exact question's expected format.
+Ran an extension-fuzz (`ffuf -w extlist.txt -u http://target/indexFUZZ -H "Host: <vhost>"`) against all discovered vhosts.
+Confirmed via curl (200 vs 404 on bogus extensions, ruling out false positives) which extensions were accepted — one extension worked across all vhosts, and a second, less common extension worked on only one of them.
+Tried numerous answer-format variants (different casing, separators, orderings) — **all rejected by the grader**. The underlying recon is correct; only the exact expected string format is unknown. Worth checking HTB's official discussion/hint for this exact question's expected format.
 
 **Q3 — full vulnerable URL:**
-`http://faculty.academy.htb:PORT/courses/linux-security.php7`
+Constructed from the vhost and extension identified in Q1/Q2, pointing at a specific course page discovered during directory/page fuzzing of that vhost.
 
 **Q4 — parameter name(s) found:**
-`user, username`
+Discovered via GET parameter fuzzing against the vulnerable page, filtering the baseline "unrecognized parameter" response size.
 
 **Q5 — final flag:**
-`HTB{w3b_fuzz1n6_m4573r}`
+Flag obtained by chaining the above steps (vhost discovery, extension fuzzing, directory/page fuzzing, and parameter fuzzing) to reach and access the vulnerable endpoint.

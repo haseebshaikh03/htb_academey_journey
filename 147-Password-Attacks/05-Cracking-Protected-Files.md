@@ -3,9 +3,8 @@
 
 Password-protected `.xlsx` file.
 
+## Approach
 ```
 office2john protected.xlsx > hash.txt
 john --wordlist=rockyou.txt hash.txt
 ```
-
-**Cracked password:** `beethoven`

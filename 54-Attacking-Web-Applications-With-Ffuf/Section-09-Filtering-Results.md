@@ -3,4 +3,5 @@
 
 Vhost fuzz with a response-size filter (`-fs <baseline-size>`) to exclude the default catch-all page and surface the real one.
 
-**Answer:** `test.academy.htb`
+## Approach
+Vhost/subdomain discovered by fuzzing Host headers and applying a response-size filter (`-fs`) to exclude the default catch-all page, isolating the genuine virtual host.

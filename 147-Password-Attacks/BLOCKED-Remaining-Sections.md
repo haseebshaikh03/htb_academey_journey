@@ -3,7 +3,7 @@
 
 All of the following need a spawned lab target, and hit the account's single-target-slot contention (running many parallel agents each spawning their own target caused constant evictions):
 
-- Network Services (hydra/netexec brute force across SSH/SMB/RDP/WinRM) — got as far as cracking `dennis : rockstar` for SSH before losing the target
+- Network Services (hydra/netexec brute force across SSH/SMB/RDP/WinRM) — got as far as cracking one account's SSH credentials via wordlist attack before losing the target
 - Password Spraying / Credential Stuffing / Default Credentials
 - Attacking SAM/SYSTEM/SECURITY hives
 - Attacking LSASS

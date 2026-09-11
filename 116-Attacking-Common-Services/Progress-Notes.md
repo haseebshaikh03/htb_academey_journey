@@ -3,7 +3,7 @@
 
 Theory read in full for: Introduction, Protocol-Specific Attacks, FTP, SMB, SQL Databases, RDP, DNS, SMTP.
 
-**SMTP section:** got one stable target (10.129.130.179, ~120min lease) and ran VRFY/RCPT-TO username enumeration probing — the mail server started rate-limiting/filtering after rapid probes, and the lease tore down before the mailbox-content question could be finished.
+**SMTP section:** got one stable target with a limited-time lease and ran VRFY/RCPT-TO username enumeration probing — the mail server started rate-limiting/filtering after rapid probes, and the lease tore down before the mailbox-content question could be finished. Approach: enumerate valid usernames via SMTP VRFY/RCPT TO, then use a discovered mailbox to read the message content the question asks about.
 
 **RDP section — registry-key question, 3 guesses all rejected:**
 - `LocalAccountTokenFilterPolicy`
@@ -18,4 +18,4 @@ None accepted — needs the exact key name/path per the section's own lab, re-ch
 - DNS: zone-transfer flag
 - Skills Assessment (final section): not yet reached
 
-**Cause:** account-wide single-target-slot contention while multiple modules were being worked in parallel — confirmed directly (other modules' target hostnames, e.g. `ACADEMY-FINC-RFI`, `ACADEMY-LPE-NIX02`, kept appearing in this module's target widget instead of this module's own box). Re-run this module alone (not alongside others) to finish it.
+**Cause:** account-wide single-target-slot contention while multiple modules were being worked in parallel — confirmed directly (other modules' target hostnames kept appearing in this module's target widget instead of this module's own box). Re-run this module alone (not alongside others) to finish it.

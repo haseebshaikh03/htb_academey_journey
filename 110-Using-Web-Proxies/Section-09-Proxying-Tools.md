@@ -1,6 +1,5 @@
 # Module 110 — Using Web Proxies
 ## Section 9: Proxying Tools
 
-Question about Metasploit's `http_put` auxiliary module. Answer comes straight from the module's source — its `FILEDATA` datastore option default value.
-
-**Answer:** `msf test file`
+## Approach
+Question is about Metasploit's `http_put` auxiliary module. Read the module's source (`show options` in msfconsole, or the source file itself) and check the default value of its `FILEDATA` datastore option.

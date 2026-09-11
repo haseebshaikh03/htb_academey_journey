@@ -1,22 +1,10 @@
 # Module 112 — Footprinting
 ## FTP section
 
-Target IP: 10.129.202.5 (ACADEMY-FOOT-NIX01, spawned)
+Target: ACADEMY-FOOT-NIX01 (spawned instance).
 
-**Anonymous FTP access confirmed** via `curl` (EPSV mode). Found `flag.txt` in FTP root, retrieved it:
+**Approach — anonymous FTP access:** confirmed anonymous login is allowed using `curl` (EPSV mode) / `ftp` / `smbclient`-style anonymous auth against the target's FTP service. Once connected, listed the FTP root and found a flag file, then downloaded and read it to get the section's flag.
 
-**Flag:** `HTB{b7skjr4c76zhsds7fzhd4k3ujg7nhdjre}`
-
-## BLOCKED — FTP banner-format question
+## Approach — FTP banner-format question
 Question: "Which version of the FTP server is running on the target system? Submit the entire banner as the answer."
-Live banner confirmed byte-exact (via `od -c` across multiple reconnects): `220 InFreight FTP v1.1`
-
-Tried and all **rejected**:
-- `220 InFreight FTP v1.1`
-- `InFreight FTP v1.1`
-- `InFreight FTP 1.1`
-- `220 infreight ftp v1.1` (lowercase)
-- `220 InFreight FTP 1.1` (no "v")
-- `InFreight FTP`
-
-This looks like a genuine grader quirk, not a wrong-banner problem — the raw banner itself is confirmed correct. Check HTB's discussion thread for this exact question for the expected format.
+Approach: connect to the FTP port directly (e.g. `nc <target> 21`, or `od -c` on the raw connect output) to capture the exact server banner text byte-for-byte, then submit that literal banner string as the answer. If the grader rejects it, try minor formatting variants (with/without the leading response code, case, "v" prefix) since these questions are sometimes picky about exact formatting — check HTB's discussion thread for this specific question if none of the natural variants are accepted.

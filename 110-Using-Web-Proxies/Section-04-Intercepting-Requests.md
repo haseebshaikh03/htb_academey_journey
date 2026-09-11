@@ -3,7 +3,5 @@
 
 Target has a "ping" utility page with an `ip` parameter.
 
-**Payload:** `ip=127.0.0.1;cat flag.txt;`
-(intercepted the request in the proxy, modified the `ip` param to chain a command via `;`)
-
-**Flag:** `HTB{1n73rc3p73d_1n_7h3_m1ddl3}`
+## Approach
+Intercept the request in your proxy, modify the `ip` parameter to chain an OS command via `;` (e.g. append `;cat flag.txt;`), forward it, and read the command output in the response.

@@ -1,19 +1,14 @@
 # Module 110 — Using Web Proxies
 ## Section 15: Skills Assessment (4 questions, one target)
 
-**Q1 — `/lucky.php`:**
-Repeatedly POST `getflag=true` — the endpoint has a random chance of returning the flag each time, so send it in a loop/via Intruder until it hits.
-**Answer:** `HTB{d154bl3d_bu770n5_w0n7_570p_m3}`
+## Q1 — `/lucky.php`
+Repeatedly POST the "get flag" parameter — the endpoint has a random chance of returning the flag each time. Automate the retry (Intruder / a loop) until it hits.
 
-**Q2 — `/admin.php` cookie:**
-The session cookie is hex-encoded, then base64-encoded. Hex-decode → base64-decode to reveal a 31-character string.
-**Answer:** `3dac93b8cd250aa8c1a36fffc79a17a`
+## Q2 — `/admin.php` cookie
+The session cookie is hex-encoded, then base64-encoded. Hex-decode → base64-decode to reveal an incomplete token.
 
-**Q3 — missing 32nd hex character:**
-The above 31-char string is one hex character short of a valid admin session token. Brute-forced the missing character (0-9a-f) via Intruder until the app accepted the resulting session as valid admin.
-**Answer:** the missing char is `d` (completes the token → grants admin session)
-**Flag:** `HTB{burp_1n7rud3r_n1nj4!}`
+## Q3 — missing hex character
+The decoded token from Q2 is one hex character short of a valid admin session token. Brute-force the missing character (0-9a-f) with Intruder until the app accepts the resulting session as valid admin.
 
-**Q4 — ColdFusion path traversal:**
-Metasploit's `coldfusion_locale_traversal` module's default/target directory.
-**Answer:** `CFIDE`
+## Q4 — ColdFusion path traversal
+Look up Metasploit's `coldfusion_locale_traversal` module and check its default/target directory option.

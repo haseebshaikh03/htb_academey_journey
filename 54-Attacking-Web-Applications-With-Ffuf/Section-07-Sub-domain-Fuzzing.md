@@ -3,4 +3,5 @@
 
 `ffuf -w <subdomain-list> -u http://academy.htb/ -H "Host: FUZZ.academy.htb"` (add each hit to `/etc/hosts`)
 
-**Answer:** `customer.inlanefreight.com`
+## Approach
+Subdomain discovered via Host-header (vhost) fuzzing with ffuf against the target domain, then confirmed and added to `/etc/hosts` for access.

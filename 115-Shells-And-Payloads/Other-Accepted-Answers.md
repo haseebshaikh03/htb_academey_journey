@@ -8,7 +8,7 @@
 - **Laudanum:** answered from theory
 - **Antak (webshell):** answered from theory
 - **PHP Web Shells:** answered from theory
-- **Live Engagement (question-843):** interpreter used by the target exploit-db PoC (50064.rb) — **Answer:** `PHP` (confirmed via the exploit-db page title)
+- **Live Engagement (question-843):** asks for the interpreter language used by the target exploit-db PoC (50064.rb). Approach: open the linked exploit-db page and check the PoC's title/description for the scripting language of the payload it generates.
 
 ## Environment fix worth keeping
 `msfconsole` was hanging/crashing (3+ min) when launched via `docker exec htb bash -c "msfconsole ..."` — root cause: default cwd `/` made Ruby's bootsnap gem scan the whole filesystem and hit a recursive symlink loop under `/usr/lib/llvm-18/.../Debug+Asserts`.

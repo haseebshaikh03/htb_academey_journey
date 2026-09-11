@@ -8,6 +8,4 @@
 
 **Chain:** upload a PHP payload via `/api/application.php` → include it via the `contact.php?region=` double-encoded traversal → RCE as `www-data` (confirmed `uid=33(www-data)`).
 
-Read the flag file (`flag_09ebca.txt`) via the RCE.
-
-**Answer:** `eedbb78d4800aa45573840ed6bd2d1e3`
+**Answer** found by reading the flag file via the RCE established through this upload + double-URL-encoded LFI chain.

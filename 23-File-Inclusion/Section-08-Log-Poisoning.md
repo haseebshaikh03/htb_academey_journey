@@ -14,4 +14,4 @@
 ?page=/var/log/apache2/access.log&cmd=cat+/path/to/flag
 ```
 
-**Flag:** `HTB{1095_5#0u1d_n3v3r_63_3xp053d}`
+**Flag** found by poisoning the Apache access log with a PHP payload via the User-Agent header, then including that log file through the LFI to execute it.

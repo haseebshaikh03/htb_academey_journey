@@ -3,6 +3,6 @@
 
 **Note:** Debian's stock `john` package lacks several formats (e.g. RIPEMD-128, sha512crypt). Had to build **John the Ripper jumbo** from source to get full format support.
 
-**Single-crack mode** (uses GECOS/username info as candidates): cracked hash → `NAITSABES`
-
-**Wordlist mode** on a RIPEMD-128 hash: cracked → `50cent`
+## Approach
+- **Single-crack mode** (uses GECOS/username info as candidates) against the target hash.
+- **Wordlist mode** against a RIPEMD-128 hash, using rockyou.txt.
