@@ -53,7 +53,5 @@ Continue enumerating the email in the inbox to get the flag.
 
 3 fetch 1 body[text]
 * 1 FETCH (BODY[TEXT] {34}
-HTB{983uzn8jmfgpd8jmof8c34n7zio}
 )
 3 OK Fetch completed (0.001 + 0.000 secs).
-Answer: HTB{983uzn8jmfgpd8jmof8c34n7zio}
