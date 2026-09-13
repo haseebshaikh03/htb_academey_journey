@@ -1,0 +1,10 @@
+# Module 58 — SQLMap Essentials
+## Section 6: Attack Tuning — BLOCKED (target infra contention, newly discovered this session)
+
+Not mentioned in the original task brief, but discovered this session: this section ("Building Attacks" category, 2/3 sub-sections done) also has **3 unanswered questions** (flags for "Case #5", "Case #6", "Case #7" — presumably part of a numbered set of tuning-technique demo cases, with cases 1-4 answered elsewhere/previously).
+
+**Approach (from the section's own theory, not yet executed against a working target):** this section covers `--level`/`--risk` tuning, status-code handling, `--union-char`/`--union-from`, and related SQLMap fine-tuning switches. The intended approach is to spawn the section's target, identify which "case" maps to which tuning switch is required (e.g. a case that needs a raised `--risk` for OR-based payloads, one needing custom status-code handling, etc.), and run SQLMap with the matching switch against each case's endpoint to dump its `flagN` table.
+
+**BLOCKED — target infrastructure issue, not a technique problem:** every time this section's target was spawned this session, the shown IP:port (`154.57.164.82:30237`, consistent across the module page and multiple re-checks) actually served a completely unrelated placeholder page (`<title>inlanefreight</title>` / "Welcome to inlanefreight.htb") instead of this module's real content — no `case*`/`flag*` paths existed there (all 404). This matches the same account-wide target-contention symptom seen in the Skills Assessment section this session (the shared IP:port pool appears to be serving another concurrent session's target). No "re-spawn" button was available to force a new instance once one is already marked active.
+
+**Next attempt should:** retry when the account isn't under heavy concurrent use, confirm the served page is actually this module's app (not an unrelated placeholder) before spending time on the questions, then work through the 3 remaining cases with SQLMap directly.
